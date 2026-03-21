@@ -1,0 +1,64 @@
+import os
+from .news import News
+from .private_ad import PrivateAd
+from .weather import WeatherUpdate
+from .base import Post
+from utils.text_utils import normalize_text, fix_iz_mistakes
+
+class FileProcessingError(Exception):
+    """Custom exception for file processing errors"""
+    pass
+
+class FilePostProvider:
+    """Read posts from file, normalize text, publish, then delete file"""
+
+    def __init__(self, file_path=None):
+        self.file_path = file_path or os.path.join("input", "posts.txt")
+
+    def process_file(self):
+        if not os.path.exists(self.file_path):
+            raise FileProcessingError(f"File not found: {self.file_path}")
+
+        try:
+            with open(self.file_path, "r", encoding="utf-8") as f:
+                lines = f.readlines()
+        except Exception as e:
+            raise FileProcessingError(f"Error reading file: {e}")
+
+        current_post = {}
+        for line in lines + ["\n"]:  # добавляем пустую строку, чтобы обработать последний пост
+            line = line.strip()
+            if not line:
+                if current_post:
+                    self._publish_from_dict(current_post)
+                    current_post = {}
+                continue
+            try:
+                key, value = line.split(":", 1)
+                current_post[key.strip().lower()] = value.strip()
+            except ValueError:
+                print(f"Skipping invalid line: {line}")
+
+        # удаляем файл после успешной обработки
+        os.remove(self.file_path)
+        print(f"File {self.file_path} processed and deleted.")
+
+    def _publish_from_dict(self, record):
+        post_type = record.get("type", "").lower()
+        text = record.get("text", "")
+        text = fix_iz_mistakes(normalize_text(text))
+
+        if post_type == "news":
+            city = record.get("city", "Unknown")
+            post = News(text, city)
+        elif post_type == "privatead":
+            exp_date = record.get("expiration", "")
+            post = PrivateAd(text, exp_date)
+        elif post_type == "weather":
+            temp = int(record.get("temperature", 20))
+            post = WeatherUpdate(text, temp)
+        else:
+            print(f"Unknown post type: {post_type}")
+            return
+
+        post.publish()

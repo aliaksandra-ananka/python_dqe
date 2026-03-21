@@ -1,0 +1,11 @@
+Type: News
+Text: Big event in the city!
+City: Minsk
+
+Type: PrivateAd
+Text: Sale on products
+Expiration: 2026-04-01
+
+Type: Weather
+Text: Sunny day
+Temperature: 28
