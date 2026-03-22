@@ -34,3 +34,15 @@ Weather Update ----------
 heavy rain expected
 Temperature: 8°C (cold)
 
+News ----------------
+new art exhibition opens
+City: Minsk, Date: 2026-03-22 13:45
+
+Private Ad -------------
+discount on winter jackets
+Expires in 40 day(s)
+
+Weather Update ----------
+cold wind expected
+Temperature: 5°C (cold)
+

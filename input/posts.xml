@@ -1,0 +1,16 @@
+<posts>
+    <post type="News">
+        <text>New art exhibition opens</text>
+        <city>Minsk</city>
+    </post>
+
+    <post type="PrivateAd">
+        <text>Discount on winter jackets</text>
+        <expiration>2026-05-01</expiration>
+    </post>
+
+    <post type="Weather">
+        <text>Cold wind expected</text>
+        <temperature>5</temperature>
+    </post>
+</posts>
