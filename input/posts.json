@@ -1,0 +1,17 @@
+[
+  {
+    "type": "News",
+    "text": "New library exhibition opens tomorrow!",
+    "city": "Minsk"
+  },
+  {
+    "type": "PrivateAd",
+    "text": "Discounts on handmade scarves",
+    "expiration": "2026-05-10"
+  },
+  {
+    "type": "Weather",
+    "text": "Heavy rain expected",
+    "temperature": 8
+  }
+]

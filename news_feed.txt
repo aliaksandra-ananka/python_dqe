@@ -10,3 +10,27 @@ Private Ad -------------
 abracadabra
 Expires in 26590 day(s)
 
+News ----------------
+big event in the city!
+City: Minsk, Date: 2026-03-21 22:55
+
+Private Ad -------------
+sale on products
+Expires in 11 day(s)
+
+Weather Update ----------
+sunny day
+Temperature: 28°C (hot)
+
+News ----------------
+new library exhibition opens tomorrow!
+City: Minsk, Date: 2026-03-22 13:35
+
+Private Ad -------------
+discounts on handmade scarves
+Expires in 49 day(s)
+
+Weather Update ----------
+heavy rain expected
+Temperature: 8°C (cold)
+
