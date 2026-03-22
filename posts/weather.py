@@ -1,19 +1,18 @@
 from .base import Post
+from database.db_manager import DatabaseManager
+
 
 class WeatherUpdate(Post):
     def __init__(self, text, temperature):
         super().__init__(text)
         self.temperature = temperature
 
-    @staticmethod
-    def temperature_state(temp):
-        if temp < 10:
-            return "cold"
-        elif 10 <= temp < 25:
-            return "warm"
-        else:
-            return "hot"
-
     def _format(self):
-        state = WeatherUpdate.temperature_state(self.temperature)
-        return f"Weather Update ----------\n{self._text}\nTemperature: {self.temperature}°C ({state})"
+        return f"Weather Update ----------\n{self._text}\nTemperature: {self.temperature}"
+
+    def publish(self):
+        super().publish()
+
+        db = DatabaseManager()
+        db.insert_weather(self._text, self.temperature)
+        db.close()

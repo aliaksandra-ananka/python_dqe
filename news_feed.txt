@@ -46,3 +46,15 @@ Weather Update ----------
 cold wind expected
 Temperature: 5°C (cold)
 
+News ----------------
+big event in the city!
+City: Minsk, Date: 2026-03-22 14:02
+
+Private Ad -------------
+sale on products
+Expires in 10 day(s)
+
+Weather Update ----------
+sunny day
+Temperature: 28
+

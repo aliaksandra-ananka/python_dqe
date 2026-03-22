@@ -1,5 +1,7 @@
 from .base import Post
 from datetime import datetime, date
+from database.db_manager import DatabaseManager
+
 
 class PrivateAd(Post):
     def __init__(self, text, expiration_date):
@@ -13,3 +15,10 @@ class PrivateAd(Post):
 
     def _format(self):
         return f"Private Ad -------------\n{self._text}\nExpires in {self.days_left} day(s)"
+
+    def publish(self):
+        super().publish()
+
+        db = DatabaseManager()
+        db.insert_private_ad(self._text, str(self.expiration_date), self.days_left)
+        db.close()
